@@ -1,0 +1,254 @@
+{% extends "base.html" %}
+
+{% block title %}About - HealthCheck AI{% endblock %}
+
+{% block content %}
+<div class="about-container">
+    <div class="about-hero">
+        <h1>About HealthCheck AI</h1>
+        <p class="about-subtitle">Advanced Multi-Agent Symptom Analysis System</p>
+    </div>
+
+    <div class="about-content">
+        <div class="about-card">
+            <div class="card-header">
+                <i class="fas fa-bullseye"></i>
+                <h2>Problem Statement</h2>
+            </div>
+            <div class="card-content">
+                <p>
+                    Many people experience symptoms but struggle to understand what they might indicate or when to seek medical help. 
+                    Traditional symptom checkers often provide generic advice without considering the complexity of symptom interactions 
+                    or the urgency of different conditions.
+                </p>
+                <p>
+                    HealthCheck AI addresses this challenge by using a sophisticated multi-agent system that analyzes symptoms from 
+                    multiple perspectives, providing more accurate and actionable health insights.
+                </p>
+            </div>
+        </div>
+
+        <div class="about-card">
+            <div class="card-header">
+                <i class="fas fa-cogs"></i>
+                <h2>Multi-Agent Workflow</h2>
+            </div>
+            <div class="card-content">
+                <div class="workflow-steps">
+                    <div class="workflow-step">
+                        <div class="step-icon">
+                            <i class="fas fa-search"></i>
+                        </div>
+                        <div class="step-content">
+                            <h3>1. Symptom Analyzer Agent</h3>
+                            <p>
+                                Parses and normalizes user input, extracting key symptoms, severity indicators, 
+                                and duration information from free-text descriptions.
+                            </p>
+                            <ul>
+                                <li>Natural language processing</li>
+                                <li>Symptom normalization</li>
+                                <li>Severity detection</li>
+                                <li>Confidence scoring</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="workflow-step">
+                        <div class="step-icon">
+                            <i class="fas fa-map"></i>
+                        </div>
+                        <div class="step-content">
+                            <h3>2. Condition Mapper Agent</h3>
+                            <p>
+                                Maps normalized symptoms to potential medical conditions using both rule-based 
+                                knowledge and optional AI enhancement via Groq API.
+                            </p>
+                            <ul>
+                                <li>Rule-based condition matching</li>
+                                <li>AI-enhanced analysis </li>
+                                <li>Confidence scoring</li>
+                                <li>Condition ranking</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="workflow-step">
+                        <div class="step-icon">
+                            <i class="fas fa-user-md"></i>
+                        </div>
+                        <div class="step-content">
+                            <h3>3. Medical Advisor Agent</h3>
+                            <p>
+                                Provides medical advice, detects emergency situations, and offers treatment 
+                                recommendations based on the analysis results.
+                            </p>
+                            <ul>
+                                <li>Emergency symptom detection</li>
+                                <li>Treatment recommendations</li>
+                                <li>Medicine suggestions</li>
+                                <li>When to seek help guidance</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="about-card">
+            <div class="card-header">
+                <i class="fas fa-tools"></i>
+                <h2>Technology Stack</h2>
+            </div>
+            <div class="card-content">
+                <div class="tech-grid">
+                    <div class="tech-item">
+                        <i class="fab fa-python"></i>
+                        <h4>Python + Flask</h4>
+                        <p>Backend web framework for robust API development</p>
+                    </div>
+                    <div class="tech-item">
+                        <i class="fas fa-code"></i>
+                        <h4>HTML/CSS/JavaScript</h4>
+                        <p>Modern frontend with responsive design</p>
+                    </div>
+                    <div class="tech-item">
+                        <i class="fas fa-link"></i>
+                        <h4>LangChain</h4>
+                        <p>Agent orchestration and workflow management</p>
+                    </div>
+                    <div class="tech-item">
+                        <i class="fas fa-robot"></i>
+                        <h4>Groq API</h4>
+                        <p>Optional LLM enhancement for improved accuracy</p>
+                    </div>
+                    <div class="tech-item">
+                        <i class="fas fa-database"></i>
+                        <h4>JSON Knowledge Base</h4>
+                        <p>Comprehensive medical condition database</p>
+                    </div>
+                    <div class="tech-item">
+                        <i class="fas fa-shield-alt"></i>
+                        <h4>Environment Variables</h4>
+                        <p>Secure API key management</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="about-card">
+            <div class="card-header">
+                <i class="fas fa-brain"></i>
+                <h2>AI Model Selection</h2>
+            </div>
+            <div class="card-content">
+                <h3>Groq API with Mixtral-8x7B</h3>
+                <p>
+                    We selected Groq's Mixtral-8x7B model for its exceptional performance in medical text analysis:
+                </p>
+                <ul>
+                    <li><strong>Speed:</strong> Ultra-fast inference for real-time symptom analysis</li>
+                    <li><strong>Accuracy:</strong> High-quality medical reasoning capabilities</li>
+                    <li><strong>Cost-Effective:</strong> Efficient pricing for educational applications</li>
+                    <li><strong>Reliability:</strong> Consistent performance with medical terminology</li>
+                </ul>
+                <p>
+                    The system gracefully falls back to rule-based analysis when the API is unavailable, 
+                    ensuring consistent functionality.
+                </p>
+            </div>
+        </div>
+
+        <div class="about-card">
+            <div class="card-header">
+                <i class="fas fa-database"></i>
+                <h2>Knowledge Base</h2>
+            </div>
+            <div class="card-content">
+                <p>Our comprehensive medical knowledge base includes:</p>
+                <div class="knowledge-stats">
+                    <div class="stat-item">
+                        <div class="stat-number">22+</div>
+                        <div class="stat-label">Medical Conditions</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">150+</div>
+                        <div class="stat-label">Symptoms Mapped</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">100+</div>
+                        <div class="stat-label">Treatment Options</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">12</div>
+                        <div class="stat-label">Emergency Indicators</div>
+                    </div>
+                </div>
+                <p>
+                    Conditions range from common ailments like colds and headaches to serious conditions 
+                    requiring immediate medical attention, ensuring comprehensive coverage for various health scenarios.
+                </p>
+            </div>
+        </div>
+
+        <div class="about-card">
+            <div class="card-header">
+                <i class="fas fa-features"></i>
+                <h2>Key Features</h2>
+            </div>
+            <div class="card-content">
+                <div class="features-grid">
+                    <div class="feature-item">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <h4>Emergency Detection</h4>
+                        <p>Automatically identifies critical symptoms requiring immediate medical attention</p>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-pills"></i>
+                        <h4>Treatment Suggestions</h4>
+                        <p>Provides both over-the-counter and prescription medication recommendations</p>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-chart-line"></i>
+                        <h4>Confidence Scoring</h4>
+                        <p>Transparent confidence metrics for all analysis results</p>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-mobile-alt"></i>
+                        <h4>Responsive Design</h4>
+                        <p>Works seamlessly across desktop, tablet, and mobile devices</p>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-lock"></i>
+                        <h4>Privacy Focused</h4>
+                        <p>No personal data storage, all analysis happens in real-time</p>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-api"></i>
+                        <h4>API Available</h4>
+                        <p> API for integration with other healthcare applications</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="disclaimer-card">
+            <div class="disclaimer-header">
+                <i class="fas fa-exclamation-triangle"></i>
+                <strong>Important Medical Disclaimer</strong>
+            </div>
+            <p>
+                <strong>This application is for educational and demonstration purposes only.</strong> 
+                It is not intended to be a substitute for professional medical advice, diagnosis, or treatment. 
+                Always seek the advice of your physician or other qualified health provider with any questions 
+                you may have regarding a medical condition. Never disregard professional medical advice or 
+                delay in seeking it because of something you have read here.
+            </p>
+            <div class="emergency-notice">
+                <i class="fas fa-phone"></i>
+                <strong>In case of medical emergency, call 108/112 immediately!</strong>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,289 @@
+{% extends "base.html" %}
+
+{% block title %}Analysis Results - HealthCheck AI{% endblock %}
+
+{% block content %}
+<div class="results-container">
+    {% if error %}
+        <div class="error-card">
+            <div class="error-header">
+                <i class="fas fa-exclamation-circle"></i>
+                <h2>Analysis Error</h2>
+            </div>
+            <p>{{ error }}</p>
+            <a href="{{ url_for('index') }}" class="btn btn-primary">
+                <i class="fas fa-arrow-left"></i>
+                Try Again
+            </a>
+        </div>
+    {% else %}
+        {% set analyzed = results.analyzed_symptoms %}
+        {% set conditions = results.condition_mappings %}
+        {% set advice = results.advice %}
+
+        {% if advice.emergency_alert.emergency_detected %}
+        <div class="emergency-alert">
+            <div class="emergency-header">
+                <i class="fas fa-exclamation-triangle"></i>
+                <h2>⚠️ MEDICAL EMERGENCY DETECTED</h2>
+            </div>
+            <div class="emergency-content">
+                {% if advice.emergency_alert.call_108 %}
+                    <div class="call-108/112">
+                        <i class="fas fa-phone"></i>
+                        <strong>CALL 108/112 IMMEDIATELY</strong>
+                    </div>
+                {% endif %}
+                
+                {% for message in advice.emergency_alert.emergency_messages %}
+                    <p class="emergency-message">{{ message }}</p>
+                {% endfor %}
+                
+                <div class="emergency-actions">
+                    <h4>Immediate Actions:</h4>
+                    <ul>
+                        {% for action in advice.recommendations.immediate_actions %}
+                            <li>{{ action }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+
+        <div class="results-card">
+            <div class="card-header">
+                <i class="fas fa-search"></i>
+                <h3>Symptom Analysis</h3>
+            </div>
+            <div class="card-content">
+                <div class="analysis-item">
+                    <strong>Original Input:</strong>
+                    <p class="user-input">{{ analyzed.original_input }}</p>
+                </div>
+                
+                <div class="analysis-item">
+                    <strong>Identified Symptoms:</strong>
+                    <div class="symptom-tags">
+                        {% for symptom in analyzed.normalized_symptoms %}
+                            <span class="symptom-tag">{{ symptom }}</span>
+                        {% endfor %}
+                    </div>
+                </div>
+                
+                {% if analyzed.severity_indicators.detected_severity != 'unknown' %}
+                <div class="analysis-item">
+                    <strong>Detected Severity:</strong>
+                    <span class="severity-badge severity-{{ analyzed.severity_indicators.detected_severity }}">
+                        {{ analyzed.severity_indicators.detected_severity|title }}
+                    </span>
+                </div>
+                {% endif %}
+                
+                <div class="analysis-item">
+                    <strong>Analysis Confidence:</strong>
+                    <div class="confidence-bar">
+                        <div class="confidence-fill" style="width: {{ (analyzed.analysis_confidence * 100)|round }}%"></div>
+                        <span class="confidence-text">{{ analyzed.analysis_confidence|format_confidence }}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {% if conditions.combined_matches is defined and conditions.combined_matches %}
+        <div class="results-card">
+            <div class="card-header">
+                <i class="fas fa-diagnoses"></i>
+                <h3>Potential Conditions</h3>
+                {% if conditions.groq_api_used %}
+                    <span class="ai-badge">
+                        <i class="fas fa-robot"></i>
+                        AI Enhanced
+                    </span>
+                {% endif %}
+            </div>
+            <div class="card-content">
+                <div class="conditions-list">
+                    {% for condition in conditions.combined_matches[:5] %}
+                    <div class="condition-item">
+                        <div class="condition-header">
+                            <h4 class="condition-name">{{ condition.condition }}</h4>
+                            <div class="condition-meta">
+                                <span class="severity-badge severity-{{ condition.severity }}">
+                                    {{ condition.severity|title }}
+                                </span>
+                                <span class="match-score">
+                                    Match: {{ (condition.combined_score * 20)|round }}%
+                                </span>
+                            </div>
+                        </div>
+                        
+                        {% if condition.matched_symptoms %}
+                        <div class="matched-symptoms">
+                            <strong>Matched Symptoms:</strong>
+                            <div class="symptom-tags">
+                                {% for symptom in condition.matched_symptoms %}
+                                    <span class="symptom-tag matched">{{ symptom }}</span>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        {% endif %}
+                        
+                        {% if condition.recommendations %}
+                        <div class="condition-recommendations">
+                            <strong>Recommendations:</strong>
+                            <ul>
+                                {% for rec in condition.recommendations[:3] %}
+                                    <li>{{ rec }}</li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                        {% endif %}
+                        
+                        {% if condition.medicines %}
+                        <div class="condition-medicines">
+                            <strong>Potential Treatments:</strong>
+                            <div class="medicine-tags">
+                                {% for medicine in condition.medicines[:4] %}
+                                    <span class="medicine-tag">{{ medicine }}</span>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        {% endif %}
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        {% endif %}
+
+        {% if not advice.emergency_alert.emergency_detected %}
+        <div class="results-card">
+            <div class="card-header">
+                <i class="fas fa-lightbulb"></i>
+                <h3>Recommendations</h3>
+            </div>
+            <div class="card-content">
+                {% if advice.recommendations.self_care %}
+                <div class="recommendation-section">
+                    <h4><i class="fas fa-home"></i> Self-Care Measures</h4>
+                    <ul class="recommendation-list">
+                        {% for item in advice.recommendations.self_care %}
+                            <li>{{ item }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                {% endif %}
+                
+                {% if advice.recommendations.when_to_see_doctor %}
+                <div class="recommendation-section">
+                    <h4><i class="fas fa-user-md"></i> Consider Medical Consultation</h4>
+                    <ul class="recommendation-list">
+                        {% for item in advice.recommendations.when_to_see_doctor %}
+                            <li>{{ item }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+        {% endif %}
+
+        {% if advice.medicine_suggestions %}
+        <div class="results-card">
+            <div class="card-header">
+                <i class="fas fa-pills"></i>
+                <h3>Treatment Options</h3>
+            </div>
+            <div class="card-content">
+                {% if advice.medicine_suggestions.over_the_counter %}
+                <div class="medicine-section">
+                    <h4><i class="fas fa-shopping-cart"></i> Over-the-Counter Options</h4>
+                    <div class="medicine-tags">
+                        {% for medicine in advice.medicine_suggestions.over_the_counter %}
+                            <span class="medicine-tag otc">{{ medicine }}</span>
+                        {% endfor %}
+                    </div>
+                </div>
+                {% endif %}
+                
+                {% if advice.medicine_suggestions.prescription_needed %}
+                <div class="medicine-section">
+                    <h4><i class="fas fa-prescription"></i> Prescription Medications</h4>
+                    <div class="medicine-tags">
+                        {% for medicine in advice.medicine_suggestions.prescription_needed %}
+                            <span class="medicine-tag prescription">{{ medicine }}</span>
+                        {% endfor %}
+                    </div>
+                    <p class="medicine-note">
+                        <i class="fas fa-info-circle"></i>
+                        These medications require a prescription from a healthcare provider.
+                    </p>
+                </div>
+                {% endif %}
+                
+                {% if advice.medicine_suggestions.natural_remedies %}
+                <div class="medicine-section">
+                    <h4><i class="fas fa-leaf"></i> Natural Remedies</h4>
+                    <div class="medicine-tags">
+                        {% for remedy in advice.medicine_suggestions.natural_remedies %}
+                            <span class="medicine-tag natural">{{ remedy }}</span>
+                        {% endfor %}
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+        {% endif %}
+
+        <div class="results-card">
+            <div class="card-header">
+                <i class="fas fa-hospital"></i>
+                <h3>When to Seek Medical Help</h3>
+            </div>
+            <div class="card-content">
+                <ul class="help-list">
+                    {% for item in advice.when_to_seek_help %}
+                        <li>{{ item }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+
+        {% if advice.general_advice %}
+        <div class="results-card">
+            <div class="card-header">
+                <i class="fas fa-heart"></i>
+                <h3>General Health Advice</h3>
+            </div>
+            <div class="card-content">
+                <ul class="advice-list">
+                    {% for item in advice.general_advice %}
+                        <li>{{ item }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+        {% endif %}
+
+        <div class="disclaimer-card">
+            <div class="disclaimer-header">
+                <i class="fas fa-exclamation-triangle"></i>
+                <strong>Medical Disclaimer</strong>
+            </div>
+            <p>{{ advice.disclaimer }}</p>
+        </div>
+
+        <div class="action-buttons">
+            <a href="{{ url_for('index') }}" class="btn btn-primary">
+                <i class="fas fa-plus"></i>
+                New Analysis
+            </a>
+            <button onclick="window.print()" class="btn btn-secondary">
+                <i class="fas fa-print"></i>
+                Print Results
+            </button>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,172 @@
+{
+  "conditions": [
+    {
+      "name": "Common Cold",
+      "symptoms": ["runny nose", "sneezing", "cough", "sore throat", "congestion", "mild headache", "low fever"],
+      "severity": "mild",
+      "recommendations": ["Rest", "Stay hydrated", "Over-the-counter cold medications", "Warm salt water gargle"],
+      "medicines": ["Acetaminophen", "Ibuprofen", "Decongestants", "Cough suppressants"]
+    },
+    {
+      "name": "Influenza (Flu)",
+      "symptoms": ["high fever", "body aches", "fatigue", "headache", "cough", "sore throat", "chills"],
+      "severity": "moderate",
+      "recommendations": ["Rest", "Antiviral medications if caught early", "Stay hydrated", "Monitor symptoms"],
+      "medicines": ["Oseltamivir (Tamiflu)", "Acetaminophen", "Ibuprofen", "Cough suppressants"]
+    },
+    {
+      "name": "Migraine",
+      "symptoms": ["severe headache", "nausea", "vomiting", "sensitivity to light", "sensitivity to sound", "visual disturbances"],
+      "severity": "moderate",
+      "recommendations": ["Dark, quiet room", "Cold compress", "Prescription medications", "Avoid triggers"],
+      "medicines": ["Sumatriptan", "Ibuprofen", "Acetaminophen", "Anti-nausea medications"]
+    },
+    {
+      "name": "Gastroenteritis",
+      "symptoms": ["nausea", "vomiting", "diarrhea", "stomach cramps", "low fever", "dehydration"],
+      "severity": "moderate",
+      "recommendations": ["Stay hydrated", "BRAT diet", "Rest", "Electrolyte replacement"],
+      "medicines": ["Oral rehydration salts", "Loperamide", "Probiotics", "Anti-nausea medications"]
+    },
+    {
+      "name": "Urinary Tract Infection",
+      "symptoms": ["burning urination", "frequent urination", "cloudy urine", "pelvic pain", "strong urine odor"],
+      "severity": "moderate",
+      "recommendations": ["Drink plenty of water", "Cranberry juice", "See doctor for antibiotics", "Avoid irritants"],
+      "medicines": ["Antibiotics (Trimethoprim-sulfamethoxazole)", "Phenazopyridine", "Ibuprofen"]
+    },
+    {
+      "name": "Allergic Rhinitis",
+      "symptoms": ["sneezing", "runny nose", "itchy eyes", "watery eyes", "nasal congestion", "postnasal drip"],
+      "severity": "mild",
+      "recommendations": ["Avoid allergens", "Antihistamines", "Nasal sprays", "Air purifiers"],
+      "medicines": ["Loratadine", "Cetirizine", "Nasal corticosteroids", "Decongestants"]
+    },
+    {
+      "name": "Bronchitis",
+      "symptoms": ["persistent cough", "mucus production", "chest discomfort", "fatigue", "mild fever", "shortness of breath"],
+      "severity": "moderate",
+      "recommendations": ["Rest", "Stay hydrated", "Humidifier", "Avoid smoke and irritants"],
+      "medicines": ["Cough suppressants", "Expectorants", "Bronchodilators", "Anti-inflammatory medications"]
+    },
+    {
+      "name": "Sinusitis",
+      "symptoms": ["facial pain", "nasal congestion", "thick nasal discharge", "reduced smell", "headache", "tooth pain"],
+      "severity": "moderate",
+      "recommendations": ["Nasal irrigation", "Steam inhalation", "Warm compresses", "Decongestants"],
+      "medicines": ["Nasal corticosteroids", "Decongestants", "Antibiotics (if bacterial)", "Pain relievers"]
+    },
+    {
+      "name": "Anxiety Disorder",
+      "symptoms": ["excessive worry", "restlessness", "fatigue", "difficulty concentrating", "muscle tension", "sleep problems"],
+      "severity": "moderate",
+      "recommendations": ["Therapy", "Relaxation techniques", "Regular exercise", "Stress management"],
+      "medicines": ["SSRIs", "Benzodiazepines (short-term)", "Beta-blockers", "Buspirone"]
+    },
+    {
+      "name": "Depression",
+      "symptoms": ["persistent sadness", "loss of interest", "fatigue", "sleep changes", "appetite changes", "difficulty concentrating"],
+      "severity": "moderate",
+      "recommendations": ["Professional counseling", "Medication", "Regular exercise", "Social support"],
+      "medicines": ["SSRIs", "SNRIs", "Tricyclic antidepressants", "Atypical antidepressants"]
+    },
+    {
+      "name": "Hypertension",
+      "symptoms": ["headaches", "dizziness", "blurred vision", "chest pain", "shortness of breath", "nosebleeds"],
+      "severity": "serious",
+      "recommendations": ["Regular monitoring", "Lifestyle changes", "Medication compliance", "Reduce sodium intake"],
+      "medicines": ["ACE inhibitors", "Beta-blockers", "Diuretics", "Calcium channel blockers"]
+    },
+    {
+      "name": "Type 2 Diabetes",
+      "symptoms": ["increased thirst", "frequent urination", "fatigue", "blurred vision", "slow healing wounds", "tingling hands"],
+      "severity": "serious",
+      "recommendations": ["Blood sugar monitoring", "Dietary changes", "Regular exercise", "Medication compliance"],
+      "medicines": ["Metformin", "Insulin", "Sulfonylureas", "DPP-4 inhibitors"]
+    },
+    {
+      "name": "Asthma",
+      "symptoms": ["wheezing", "shortness of breath", "chest tightness", "coughing", "difficulty breathing", "fatigue"],
+      "severity": "serious",
+      "recommendations": ["Avoid triggers", "Use inhaler as prescribed", "Monitor peak flow", "Action plan"],
+      "medicines": ["Albuterol inhaler", "Corticosteroid inhalers", "Long-acting bronchodilators", "Leukotriene modifiers"]
+    },
+    {
+      "name": "Pneumonia",
+      "symptoms": ["high fever", "chills", "cough with phlegm", "chest pain", "shortness of breath", "fatigue"],
+      "severity": "serious",
+      "recommendations": ["Seek immediate medical attention", "Antibiotics", "Rest", "Stay hydrated"],
+      "medicines": ["Antibiotics", "Cough suppressants", "Fever reducers", "Oxygen therapy (if needed)"]
+    },
+    {
+      "name": "Heart Attack",
+      "symptoms": ["chest pain", "shortness of breath", "nausea", "sweating", "dizziness", "pain in arm or jaw"],
+      "severity": "emergency",
+      "recommendations": ["CALL 911 IMMEDIATELY", "Chew aspirin if not allergic", "Stay calm", "Do not drive yourself"],
+      "medicines": ["Aspirin (emergency)", "Nitroglycerin", "Beta-blockers", "ACE inhibitors"]
+    },
+    {
+      "name": "Stroke",
+      "symptoms": ["sudden weakness", "facial drooping", "speech difficulties", "confusion", "severe headache", "vision problems"],
+      "severity": "emergency",
+      "recommendations": ["CALL 911 IMMEDIATELY", "Note time of symptom onset", "Do not give food or water", "Keep patient calm"],
+      "medicines": ["Clot-busting drugs (tPA)", "Antiplatelet agents", "Anticoagulants", "Blood pressure medications"]
+    },
+    {
+      "name": "Appendicitis",
+      "symptoms": ["abdominal pain", "nausea", "vomiting", "fever", "loss of appetite", "pain that moves to right side"],
+      "severity": "emergency",
+      "recommendations": ["SEEK IMMEDIATE MEDICAL ATTENTION", "Do not eat or drink", "Do not take pain medications", "Go to ER"],
+      "medicines": ["Antibiotics", "Pain management (post-surgery)", "Anti-nausea medications"]
+    },
+    {
+      "name": "Allergic Reaction (Severe)",
+      "symptoms": ["difficulty breathing", "swelling of face or throat", "rapid pulse", "dizziness", "widespread rash", "nausea"],
+      "severity": "emergency",
+      "recommendations": ["CALL 911 IMMEDIATELY", "Use EpiPen if available", "Remove allergen", "Lie flat with legs elevated"],
+      "medicines": ["Epinephrine", "Antihistamines", "Corticosteroids", "Bronchodilators"]
+    },
+    {
+      "name": "Food Poisoning",
+      "symptoms": ["nausea", "vomiting", "diarrhea", "stomach cramps", "fever", "headache"],
+      "severity": "moderate",
+      "recommendations": ["Stay hydrated", "Rest", "BRAT diet", "Monitor symptoms"],
+      "medicines": ["Oral rehydration salts", "Anti-diarrheal medications", "Probiotics", "Electrolyte supplements"]
+    },
+    {
+      "name": "Tension Headache",
+      "symptoms": ["dull headache", "pressure around head", "neck stiffness", "scalp tenderness", "mild nausea"],
+      "severity": "mild",
+      "recommendations": ["Rest in quiet room", "Apply heat or cold", "Massage", "Stress management"],
+      "medicines": ["Acetaminophen", "Ibuprofen", "Aspirin", "Muscle relaxants"]
+    },
+    {
+      "name": "Eczema",
+      "symptoms": ["itchy skin", "red patches", "dry skin", "skin rash", "swelling", "skin thickening"],
+      "severity": "mild",
+      "recommendations": ["Moisturize regularly", "Avoid triggers", "Use gentle soaps", "Cool compresses"],
+      "medicines": ["Topical corticosteroids", "Antihistamines", "Moisturizers", "Calcineurin inhibitors"]
+    },
+    {
+      "name": "Conjunctivitis",
+      "symptoms": ["red eyes", "itchy eyes", "watery eyes", "discharge", "burning sensation", "blurred vision"],
+      "severity": "mild",
+      "recommendations": ["Warm compresses", "Avoid touching eyes", "Clean hands frequently", "Avoid sharing items"],
+      "medicines": ["Antibiotic eye drops", "Antihistamine drops", "Artificial tears", "Anti-inflammatory drops"]
+    }
+  ],
+  "emergency_symptoms": [
+    "chest pain",
+    "difficulty breathing",
+    "severe abdominal pain",
+    "sudden weakness",
+    "facial drooping",
+    "speech difficulties",
+    "severe headache with stiff neck",
+    "high fever with rash",
+    "severe allergic reaction",
+    "loss of consciousness",
+    "severe bleeding",
+    "signs of stroke"
+  ]
+}

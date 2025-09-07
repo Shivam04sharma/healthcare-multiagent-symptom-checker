@@ -1,0 +1,149 @@
+{% extends "base.html" %}
+
+{% block title %}HealthCheck Symptom Checker {% endblock %}
+
+{% block content %}
+<div class="hero-section">
+    <div class="hero-content">
+        <h1 class="hero-title">
+            <i class="fas fa-stethoscope"></i>
+            AI-Powered Symptom Analysis
+        </h1>
+        <p class="hero-subtitle">
+            Get insights about your symptoms using our advanced multi-agent AI system
+        </p>
+        <div class="hero-features">
+            <div class="feature">
+                <i class="fas fa-brain"></i>
+                <span>AI Analysis</span>
+            </div>
+            <div class="feature">
+                <i class="fas fa-shield-alt"></i>
+                <span>Privacy First</span>
+            </div>
+            <div class="feature">
+                <i class="fas fa-clock"></i>
+                <span>Instant Results</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="form-container">
+    <div class="form-card">
+        <div class="form-header">
+            <h2>Describe Your Symptoms</h2>
+            <p>Please provide detailed information about how you're feeling</p>
+        </div>
+
+        <form id="symptom-form" action="{{ url_for('analyze_symptoms') }}" method="POST">
+            <div class="form-group">
+                <label for="symptoms" class="form-label">
+                    <i class="fas fa-notes-medical"></i>
+                    Symptoms Description *
+                </label>
+                <textarea 
+                    id="symptoms" 
+                    name="symptoms" 
+                    class="form-textarea" 
+                    placeholder="Describe your symptoms in detail.. like an (e.g., 'I have a headache, feel nauseous, and have been running a fever for 2 days')"
+                    rows="5"
+                    required
+                ></textarea>
+                <div class="form-help">
+                    Be as specific as possible. Include duration, severity, and any patterns you've noticed.
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="age" class="form-label">
+                        <i class="fas fa-birthday-cake"></i>
+                        Age
+                    </label>
+                    <input 
+                        type="number" 
+                        id="age" 
+                        name="age" 
+                        class="form-input" 
+                        placeholder="Your age"
+                        min="0" 
+                        max="150"
+                    >
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="chronic_conditions" class="form-label">
+                    <i class="fas fa-file-medical"></i>
+                    Chronic Conditions (Optional)
+                </label>
+                <input 
+                    type="text" 
+                    id="chronic_conditions" 
+                    name="chronic_conditions" 
+                    class="form-input" 
+                    placeholder="Any ongoing medical conditions... (e.g., diabetes, hypertension)"
+                >
+                <div class="form-help">
+                    List any chronic conditions that might be relevant to your current symptoms.
+                </div>
+            </div>
+
+            <button type="submit" class="submit-btn" id="submit-btn">
+                <i class="fas fa-search"></i>
+                <span>Analyze Symptoms</span>
+                <div class="loading-spinner" style="display: none;">
+                    <i class="fas fa-spinner fa-spin"></i>
+                </div>
+            </button>
+        </form>
+
+        <div class="disclaimer-card">
+            <div class="disclaimer-header">
+                <i class="fas fa-exclamation-triangle"></i>
+                <strong>Important Medical Disclaimer</strong>
+            </div>
+            <p>
+                This symptom checker is for <strong>educational and informational purposes only</strong>. 
+                It is not intended to be a substitute for professional medical advice, diagnosis, or treatment. 
+                Always seek the advice of your physician or other qualified health provider with any questions 
+                you may have regarding a medical condition.
+            </p>
+            <div class="emergency-notice">
+                <i class="fas fa-phone"></i>
+                <strong>Medical Emergency? Call 108/112 immediately!</strong>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="info-section">
+    <div class="info-container">
+        <h3>How Our AI System Works</h3>
+        <div class="process-steps">
+            <div class="step">
+                <div class="step-number">1</div>
+                <div class="step-content">
+                    <h4>Symptom Analysis</h4>
+                    <p>Our AI analyzes and normalizes your symptom description</p>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-number">2</div>
+                <div class="step-content">
+                    <h4>Condition Mapping</h4>
+                    <p>Advanced algorithms match symptoms to potential conditions</p>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-number">3</div>
+                <div class="step-content">
+                    <h4>Smart Recommendations</h4>
+                    <p>Get personalized advice and know when to seek medical help</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
