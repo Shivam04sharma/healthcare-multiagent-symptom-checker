@@ -70,7 +70,7 @@ Our system employs three specialized AI agents working in coordination:
 
 ### Infrastructure
 - **Environment Variables** - Secure configuration management
-- **RESTful API** - Clean API design for frontend-backend communication
+- **API** - Clean API design for frontend-backend communication
 - **Responsive Design** - Mobile-first approach
 
 ## 🧠 LLM Selection: Groq API with Mixtral-8x7B
