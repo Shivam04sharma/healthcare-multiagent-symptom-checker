@@ -176,4 +176,4 @@ if __name__ == '__main__':
     print(f"Groq API available: {bool(os.getenv('GROQ_API_KEY'))}")
     print("=" * 50)
     
-    app.run(host='127.0.0.1', port=5000, debug=debug_mode)
+    app.run(host='0.0.0.0', port=5000, debug=debug_mode)
